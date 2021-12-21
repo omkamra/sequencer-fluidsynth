@@ -83,12 +83,7 @@
     (midi/resolve-binding k v)))
 
 (def default-config
-  {:fluid-settings
-   {:audio
-    {:driver "pulseaudio"
-     :period-size 1024}
-    :synth
-    {:sample-rate 48000.0}}
+  {:fluid-settings {}
    :soundfonts {}})
 
 (defn deep-merge
