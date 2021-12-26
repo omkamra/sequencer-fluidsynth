@@ -29,8 +29,17 @@
   (note-off [{:keys [synth]} channel key]
     (fluid-synth/noteoff @synth channel key))
 
+  (cc [{:keys [synth]} channel ctrl value]
+    (fluid-synth/cc @synth channel ctrl value))
+
+  (pitch-bend [{:keys [synth]} channel value]
+    (fluid-synth/pitch-bend @synth channel value))
+
   (program-change [{:keys [synth]} channel program]
     (fluid-synth/program-change @synth channel program))
+
+  (bank-select [{:keys [synth]} channel bank]
+    (fluid-synth/bank-select @synth channel bank))
 
   (all-notes-off [{:keys [synth]} channel]
     (fluid-synth/all-notes-off @synth channel))
