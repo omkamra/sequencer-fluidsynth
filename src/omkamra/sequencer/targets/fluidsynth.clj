@@ -13,14 +13,15 @@
 (defn load-soundfonts
   [synth soundfonts]
   (-> (for [[name {:keys [path bank-offset]}] soundfonts]
-        {:name name
-         :path path
-         :bank-offset (or bank-offset 0)
-         :sfont (and (or (.exists (jio/file path))
-                         (throw (ex-info "file not found" {:path path})))
-                     (let [sfont (fluid-synth/sfload synth path)]
-                       (fluid-synth/set-bank-offset synth sfont bank-offset)
-                       sfont))})
+        (let [bank-offset (or bank-offset 0)]
+          {:name name
+           :path path
+           :bank-offset bank-offset
+           :sfont (and (or (.exists (jio/file path))
+                           (throw (ex-info "file not found" {:path path})))
+                       (let [sfont (fluid-synth/sfload synth path)]
+                         (fluid-synth/set-bank-offset synth sfont bank-offset)
+                         sfont))}))
       doall))
 
 (defrecord FluidSynth [config settings synth soundfonts audio-driver]
