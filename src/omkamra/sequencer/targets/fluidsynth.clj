@@ -26,29 +26,23 @@
 (defrecord FluidSynth [config settings synth soundfonts audio-driver]
   MidiDevice/protocol
 
-  (note-on [{:keys [synth]} channel key vel]
-    (fluid-synth/noteon @synth channel key vel))
-
   (note-off [{:keys [synth]} channel key]
     (fluid-synth/noteoff @synth channel key))
 
-  (cc [{:keys [synth]} channel ctrl value]
-    (fluid-synth/cc @synth channel ctrl value))
+  (note-on [{:keys [synth]} channel key vel]
+    (fluid-synth/noteon @synth channel key vel))
 
-  (pitch-bend [{:keys [synth]} channel value]
-    (fluid-synth/pitch-bend @synth channel value))
+  (control-change [{:keys [synth]} channel ctrl value]
+    (fluid-synth/cc @synth channel ctrl value))
 
   (program-change [{:keys [synth]} channel program]
     (fluid-synth/program-change @synth channel program))
 
-  (bank-select [{:keys [synth]} channel bank]
-    (fluid-synth/bank-select @synth channel bank))
+  (channel-pressure [{:keys [synth]} channel pressure]
+    (fluid-synth/channel-pressure @synth channel pressure))
 
-  (all-notes-off [{:keys [synth]} channel]
-    (fluid-synth/all-notes-off @synth channel))
-
-  (all-sounds-off [{:keys [synth]} channel]
-    (fluid-synth/all-sounds-off @synth channel))
+  (pitch-wheel [{:keys [synth]} channel value]
+    (fluid-synth/pitch-bend @synth channel value))
 
   Target/protocol
 
