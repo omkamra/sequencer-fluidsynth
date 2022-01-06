@@ -1,4 +1,4 @@
-(defproject com.github.omkamra/sequencer-fluidsynth "0.3.0"
+(defproject com.github.omkamra/sequencer-fluidsynth "0.4.0"
   :description "An omkamra.sequencer target for the FluidSynth SoundFont synthesizer"
   :url "https://github.com/omkamra/sequencer-fluidsynth"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
